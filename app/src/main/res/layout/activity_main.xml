@@ -31,4 +31,12 @@
         android:layout_width="match_parent"
         android:layout_height="60dp" />
 
+    <TextView
+        android:id="@+id/tvChange"
+        android:background="#550000ff"
+        android:gravity="center"
+        android:text="Change"
+        android:layout_width="match_parent"
+        android:layout_height="60dp" />
+
 </LinearLayout>
