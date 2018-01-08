@@ -68,16 +68,18 @@ public class ChangeActivity extends AppCompatActivity {
         String imgPath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/c.png";
 
         Observable
-                .just(imgPath) // 输入类型 String，最多是个参数
+                .just(imgPath) // 输入类型 String，最多是10个参数
+                // todo 变换的方法。如果没有这个 map 方法，subscribe 中的泛型 Action1 是什么？
+                // map 参数承上启下
                 .map(new Func1<String, Bitmap>() {
                     @Override
                     public Bitmap call(String filePath) { // 参数类型 String
                         return getBitmapFromFile(filePath); // 返回类型 Bitmap
                     }
                 })
-                .subscribe(new Action1<Bitmap>() {
+                .subscribe(new Action1<Bitmap>() {// 泛型是 map 方法返回的 Bitmap
                     @Override
-                    public void call(Bitmap bitmap) { // 参数类型 Bitmap
+                    public void call(Bitmap bitmap) { // 参数类型  map 方法返回的 Bitmap
                         showBitmap(bitmap);
                     }
                 });
