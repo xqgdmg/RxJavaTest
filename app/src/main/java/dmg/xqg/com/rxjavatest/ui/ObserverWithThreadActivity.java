@@ -33,6 +33,9 @@ public class ObserverWithThreadActivity extends AppCompatActivity {
         showPicById();
     }
 
+    /**
+     * 加载图片将会发生在 IO 线程，而设置图片则被设定在了主线程
+     */
     private void showPicById() {
         final int drawableRes = R.drawable.b;
         Observable.create(new Observable.OnSubscribe<Drawable>() {
