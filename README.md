@@ -5,29 +5,29 @@
 除了 Observer 接口之外，RxJava 还内置了一个实现了 Observer 的抽象类：Subscriber。</br>
 Observable 即被观察者，它决定什么时候触发事件以及触发怎样的事件。 RxJava 使用 create() 方法来创建一个 Observable ，并为它定义事件触发规则：</br>
 
-Observable observable = Observable.create(new Observable.OnSubscribe<String>() {
-    @Override
-    public void call(Subscriber<? super String> subscriber) {
-        subscriber.onNext("Hello");
-        subscriber.onNext("Hi");
-        subscriber.onNext("Aloha");
-        subscriber.onCompleted();
-    }
+Observable observable = Observable.create(new Observable.OnSubscribe<String>() {</br>
+    @Override</br>
+    public void call(Subscriber<? super String> subscriber) {</br>
+        subscriber.onNext("Hello");</br>
+        subscriber.onNext("Hi");</br>
+        subscriber.onNext("Aloha");</br>
+        subscriber.onCompleted();</br>
+    }</br>
 });</br></br>
 just(T...): 将传入的参数依次发送出来。</br>
-Observable observable = Observable.just("Hello", "Hi", "Aloha");
-// 将会依次调用：
-// onNext("Hello");
-// onNext("Hi");
-// onNext("Aloha");
+Observable observable = Observable.just("Hello", "Hi", "Aloha");</br>
+// 将会依次调用：</br>
+// onNext("Hello");</br>
+// onNext("Hi");</br>
+// onNext("Aloha");</br>
 // onCompleted();</br></br>
 from(T[]) / from(Iterable<? extends T>) : 将传入的数组或 Iterable 拆分成具体对象后，依次发送出来。</br>
-String[] words = {"Hello", "Hi", "Aloha"};
-Observable observable = Observable.from(words);
-// 将会依次调用：
-// onNext("Hello");
-// onNext("Hi");
-// onNext("Aloha");
+String[] words = {"Hello", "Hi", "Aloha"};</br>
+Observable observable = Observable.from(words);</br>
+// 将会依次调用：</br>
+// onNext("Hello");</br>
+// onNext("Hi");</br>
+// onNext("Aloha");</br>
 // onCompleted();</br></br>
 
 订阅的方式很奇怪：</br>
