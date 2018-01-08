@@ -38,4 +38,6 @@ observable.subscribe(subscriber);</br>
 Action0 和 Action1</br>
 Action0 是 RxJava 的一个接口，它只有一个方法 call()，这个方法是无参无返回值的；</br>
 Action1 也是一个接口，它同样只有一个方法 call(T param)，这个方法也无返回值，但有一个参数；</br>
-  
+
+ flatMap() 和 map() 有一个相同点：它也是把传入的参数转化之后返回另一个对象。但需要注意，和 map() 不同的是， flatMap() 中返回的是个 Observable 对象。</br>
+  
