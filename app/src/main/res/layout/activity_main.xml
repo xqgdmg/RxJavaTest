@@ -8,18 +8,26 @@
     tools:context="dmg.xqg.com.rxjavatest.MainActivity">
 
     <TextView
-        android:id="@+id/tvShowPic"
-        android:background="#5500ff00"
+    android:id="@+id/tvShowPic"
+    android:background="#5500ff00"
+    android:gravity="center"
+    android:text="fda"
+    android:layout_width="match_parent"
+    android:layout_height="60dp" />
+
+    <TextView
+        android:id="@+id/tvObserverSimple"
+        android:background="#550000ff"
         android:gravity="center"
-        android:text="fda"
+        android:text="ObserverSimple"
         android:layout_width="match_parent"
         android:layout_height="60dp" />
 
     <TextView
-        android:id="@+id/tvObserver"
-        android:background="#550000ff"
+        android:id="@+id/tvObserverWithThread"
+        android:background="#5500ff00"
         android:gravity="center"
-        android:text="Observer"
+        android:text="tvObserverWithThread"
         android:layout_width="match_parent"
         android:layout_height="60dp" />
 

@@ -14,6 +14,10 @@ import rx.Observer;
 import rx.Subscriber;
 import rx.functions.Action1;
 
+/**
+ * 在 RxJava 的默认规则中，事件的发出和消费都是在同一个线程的。也就是说，如果只用下面的方法，实现出来的只是一个同步的观察者模式。
+ * 一般会使用到 线程控制 —— Scheduler 调度器
+ */
 public class ObserverActivity extends AppCompatActivity {
 
     private TextView tvLogStringArray;

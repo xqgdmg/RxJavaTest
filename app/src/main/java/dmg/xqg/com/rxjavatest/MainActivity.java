@@ -8,12 +8,14 @@ import android.view.View;
 import android.widget.TextView;
 
 import dmg.xqg.com.rxjavatest.ui.ObserverActivity;
+import dmg.xqg.com.rxjavatest.ui.ObserverWithThreadActivity;
 import dmg.xqg.com.rxjavatest.ui.ShowPicActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private TextView tvShowPic;
-    private TextView tvObserver;
+    private TextView tvObserverSimple;
+    private TextView tvObserverWithThread;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,20 +28,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void initListener() {
         tvShowPic.setOnClickListener(this);
-        tvObserver.setOnClickListener(this);
+        tvObserverSimple.setOnClickListener(this);
+        tvObserverWithThread.setOnClickListener(this);
     }
 
     private void initView() {
         tvShowPic = (TextView) findViewById(R.id.tvShowPic);
-        tvObserver = (TextView) findViewById(R.id.tvObserver);
+        tvObserverSimple = (TextView) findViewById(R.id.tvObserverSimple);
+        tvObserverWithThread = (TextView) findViewById(R.id.tvObserverWithThread);
     }
 
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.tvShowPic){
             startActivity(new Intent(MainActivity.this,ShowPicActivity.class));
-        }else if (v.getId() == R.id.tvObserver){
+        }else if (v.getId() == R.id.tvObserverSimple){
             startActivity(new Intent(MainActivity.this,ObserverActivity.class));
+        }else if (v.getId() == R.id.tvObserverWithThread){
+            startActivity(new Intent(MainActivity.this,ObserverWithThreadActivity.class));
         }
     }
 }

@@ -20,7 +20,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.ShowPicActivity" />
-        <activity android:name=".ui.ObserverActivity"></activity>
+        <activity android:name=".ui.ObserverActivity" />
+        <activity android:name=".ui.ObserverWithThreadActivity"></activity>
     </application>
 
 </manifest>
