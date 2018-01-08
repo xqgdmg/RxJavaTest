@@ -1,4 +1,6 @@
 # RxJavaTest
+详情可以参阅：http://gank.io/post/560e15be2dca930e00da1083</br>
+
 与传统观察者模式不同， RxJava 的事件回调方法除了普通事件 onNext() （相当于 onClick() / onEvent()）之外，还定义了两个特殊的事件：onCompleted() 和 onError()。</br>
 除了 Observer 接口之外，RxJava 还内置了一个实现了 Observer 的抽象类：Subscriber。</br>
 Observable 即被观察者，它决定什么时候触发事件以及触发怎样的事件。 RxJava 使用 create() 方法来创建一个 Observable ，并为它定义事件触发规则：</br>
