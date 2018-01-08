@@ -32,6 +32,9 @@ public class FlatMapActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * 使用 map()，需要遍历
+     */
     private void showStudentMap() {
         Subscriber<Student> subscriber = new Subscriber<Student>() {
             @Override
@@ -82,6 +85,9 @@ public class FlatMapActivity extends AppCompatActivity {
         };
     }
 
+    /**
+     * 使用 flatMap()，不需要遍历
+     */
     private void showStudentFlatMap() {
 
         // 观察者，获取到的不是 Student，而是 Course
