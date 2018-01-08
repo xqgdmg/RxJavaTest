@@ -27,8 +27,35 @@ public class FlatMapActivity extends AppCompatActivity {
 
         initView();
         initData();
-        showStudent();
+        showStudentMap();
+//        showStudentFlatMap();
 
+    }
+
+    private void showStudentMap() {
+        Subscriber<Student> subscriber = new Subscriber<Student>() {
+            @Override
+            public void onCompleted() {
+
+            }
+            @Override
+            public void onError(Throwable e) {
+
+            }
+            @Override
+            public void onNext(Student student) {
+                Course[] courses = student.getCourses();
+                for (int i = 0; i < courses.length; i++) {
+                    Course course = courses[i];
+                    Log.e("chris", course.getName());
+                    tv.setText(course.getName());
+                }
+            }
+        };
+
+        Observable
+                .from(students)
+                .subscribe(subscriber);
     }
 
     private void initView() {
@@ -55,7 +82,7 @@ public class FlatMapActivity extends AppCompatActivity {
         };
     }
 
-    private void showStudent() {
+    private void showStudentFlatMap() {
 
         // 观察者，获取到的不是 Student，而是 Course
         Subscriber<Course> subscriber = new Subscriber<Course>() {
