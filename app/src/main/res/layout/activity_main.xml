@@ -11,7 +11,7 @@
     android:id="@+id/tvShowPic"
     android:background="#5500ff00"
     android:gravity="center"
-    android:text="fda"
+    android:text="ShowPic"
     android:layout_width="match_parent"
     android:layout_height="60dp" />
 
@@ -27,15 +27,23 @@
         android:id="@+id/tvObserverWithThread"
         android:background="#5500ff00"
         android:gravity="center"
-        android:text="tvObserverWithThread"
+        android:text="ObserverWithThread"
         android:layout_width="match_parent"
         android:layout_height="60dp" />
 
     <TextView
-        android:id="@+id/tvChange"
+        android:id="@+id/tvMap"
         android:background="#550000ff"
         android:gravity="center"
-        android:text="Change"
+        android:text="map()"
+        android:layout_width="match_parent"
+        android:layout_height="60dp" />
+
+    <TextView
+        android:id="@+id/tvFlatMap"
+        android:background="#5500ff00"
+        android:gravity="center"
+        android:text="flatMap()"
         android:layout_width="match_parent"
         android:layout_height="60dp" />
 

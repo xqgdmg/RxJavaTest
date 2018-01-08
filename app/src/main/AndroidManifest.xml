@@ -22,7 +22,8 @@
         <activity android:name=".ui.ShowPicActivity" />
         <activity android:name=".ui.ObserverActivity" />
         <activity android:name=".ui.ObserverWithThreadActivity" />
-        <activity android:name=".ui.ChangeActivity"></activity>
+        <activity android:name=".ui.MapActivity" />
+        <activity android:name=".ui.FlatMapActivity"></activity>
     </application>
 
 </manifest>

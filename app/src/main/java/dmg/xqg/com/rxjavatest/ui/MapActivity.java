@@ -18,7 +18,10 @@ import rx.Observable;
 import rx.functions.Action1;
 import rx.functions.Func1;
 
-public class ChangeActivity extends AppCompatActivity {
+/**
+ * Map() 的使用
+ */
+public class MapActivity extends AppCompatActivity {
 
     private ImageView ivShowPic;
 
