@@ -7,11 +7,13 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import dmg.xqg.com.rxjavatest.ui.ObserverActivity;
 import dmg.xqg.com.rxjavatest.ui.ShowPicActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private TextView tvShowPic;
+    private TextView tvObserver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,18 +26,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void initListener() {
         tvShowPic.setOnClickListener(this);
+        tvObserver.setOnClickListener(this);
     }
 
     private void initView() {
         tvShowPic = (TextView) findViewById(R.id.tvShowPic);
+        tvObserver = (TextView) findViewById(R.id.tvObserver);
     }
 
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.tvShowPic){
             startActivity(new Intent(MainActivity.this,ShowPicActivity.class));
-        }else if (1 == 2){
-            Log.e("chris","chris");
+        }else if (v.getId() == R.id.tvObserver){
+            startActivity(new Intent(MainActivity.this,ObserverActivity.class));
         }
     }
 }

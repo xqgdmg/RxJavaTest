@@ -5,21 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="dmg.xqg.com.rxjavatest.MainActivity">
+    tools:context="dmg.xqg.com.rxjavatest.ui.ObserverActivity">
 
     <TextView
-        android:id="@+id/tvShowPic"
+        android:id="@+id/tvLogStringArray"
         android:background="#5500ff00"
         android:gravity="center"
-        android:text="fda"
-        android:layout_width="match_parent"
-        android:layout_height="60dp" />
-
-    <TextView
-        android:id="@+id/tvObserver"
-        android:background="#550000ff"
-        android:gravity="center"
-        android:text="Observer"
+        android:text="no data"
         android:layout_width="match_parent"
         android:layout_height="60dp" />
 
