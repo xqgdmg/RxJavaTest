@@ -5,27 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:id="@+id/llRoot"
     tools:context="dmg.xqg.com.rxjavatest.ui.ShowPicActivity">
 
-    <ImageView
-        android:id="@+id/iv01"
-        android:layout_margin="10dp"
-        tools:src="@mipmap/ic_launcher"
-        android:layout_width="50dp"
-        android:layout_height="50dp" />
-
-    <ImageView
-        android:id="@+id/iv02"
-        android:layout_margin="10dp"
-        tools:src="@mipmap/ic_launcher"
-        android:layout_width="50dp"
-        android:layout_height="50dp" />
-
-    <ImageView
-        android:id="@+id/iv03"
-        android:layout_margin="10dp"
-        tools:src="@mipmap/ic_launcher"
-        android:layout_width="50dp"
-        android:layout_height="50dp" />
 
 </LinearLayout>
