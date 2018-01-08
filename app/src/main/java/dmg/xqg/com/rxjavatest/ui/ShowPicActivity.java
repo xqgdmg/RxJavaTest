@@ -94,32 +94,32 @@ public class ShowPicActivity extends AppCompatActivity {
         Observable
                 // 数据源
                 .from(folders)
-                //
+                // 返回合并的结果（该文件夹下的所有文件）
                 .flatMap(new Func1<File, Observable<File>>() {
                     @Override
                     public Observable<File> call(File file) {
                         return Observable.from(file.listFiles());
                     }
                 })
-                // 过滤条件
+                // 过滤条件（以flatMap合并后的结果为基础）
                 .filter(new Func1<File, Boolean>() {
                     @Override
                     public Boolean call(File file) {
                         return file.getName().endsWith(".png");
                     }
                 })
-                // 耗时的操作
+                // 返回一个特定功能的的 Observable，这个和 subscribe 有关
                 .map(new Func1<File, Bitmap>() {
                     @Override
                     public Bitmap call(File file) {
                         return getBitmapFromFile(file);
                     }
                 })
-                //
+                // Observable 在哪个线程发射
                 .subscribeOn(Schedulers.io())
-                //
+                // Observer 在哪个线程接收？
                 .observeOn(AndroidSchedulers.mainThread())
-                // 最后要执行的操作
+                // Observer 要执行的操作
                 .subscribe(new Action1<Bitmap>() {
                     @Override
                     public void call(Bitmap bitmap) {
