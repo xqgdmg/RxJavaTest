@@ -5,6 +5,8 @@ import android.graphics.BitmapFactory;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
@@ -24,6 +26,7 @@ import rx.schedulers.Schedulers;
 
 public class ShowPicActivity extends AppCompatActivity {
 
+    // 这是一个文件夹数组
     private File[] folders;
     private ArrayList<Bitmap> bitmaps;
     private LinearLayout llRoot;
@@ -52,9 +55,7 @@ public class ShowPicActivity extends AppCompatActivity {
         getFileFromStream(cInputStream, cFile);
 
         folders = new File[]{
-                aFile,
-                bFile,
-                cFile
+                new File(Environment.getExternalStorageDirectory().getAbsolutePath())
         };
     }
 
@@ -82,6 +83,14 @@ public class ShowPicActivity extends AppCompatActivity {
     }
 
     private void show() {
+        // 方式1，传统的方法
+//        showByOldWay();
+
+        // 方式2，rxjava
+        showByRxJava();
+    }
+
+    private void showByRxJava() {
         Observable
                 // 数据源
                 .from(folders)
@@ -119,6 +128,29 @@ public class ShowPicActivity extends AppCompatActivity {
                 });
     }
 
+    private void showByOldWay() {
+        new Thread() {
+            @Override
+            public void run() {
+                super.run();
+                for (File folder : folders) {
+                    File[] files = folder.listFiles();
+                    for (File file : files) {
+                        if (file.getName().endsWith(".png")) {
+                            final Bitmap bitmap = getBitmapFromFile(file);
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    addAndShowImage(bitmap);
+                                }
+                            });
+                        }
+                    }
+                }
+            }
+        }.start();
+    }
+
     /**
      * 添加图片并显示
      */
@@ -129,6 +161,9 @@ public class ShowPicActivity extends AppCompatActivity {
         // 显示所有图片
         for (int i = 0; i < bitmaps.size(); i++) {
             ImageView iv = new ImageView(ShowPicActivity.this);
+            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(100,100);
+            lp.setMargins(30,30,30,30);
+            iv.setLayoutParams(lp);
             iv.setImageBitmap(bitmaps.get(i));
             llRoot.addView(iv);
         }
