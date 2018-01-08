@@ -6,4 +6,12 @@
     android:layout_height="match_parent"
     tools:context="dmg.xqg.com.rxjavatest.ui.FlatMapActivity">
 
+    <TextView
+        android:id="@+id/tv"
+        android:background="#5500ff00"
+        android:gravity="center"
+        android:text="no data"
+        android:layout_width="match_parent"
+        android:layout_height="60dp" />
+
 </android.support.constraint.ConstraintLayout>
