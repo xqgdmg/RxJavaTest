@@ -1,17 +1,23 @@
 package dmg.xqg.com.rxjavatest.ui;
 
+import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import dmg.xqg.com.rxjavatest.R;
 import rx.Observable;
+import rx.Observer;
+import rx.Subscriber;
 import rx.functions.Action1;
 
 public class ObserverActivity extends AppCompatActivity {
 
     private TextView tvLogStringArray;
+    private ImageView ivShowPicById;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +28,33 @@ public class ObserverActivity extends AppCompatActivity {
         initListener();
 
         logStringArray();
+        showPicById();
+    }
+
+    private void showPicById() {
+        final int drawableRes = R.drawable.a;
+        Observable.create(new Observable.OnSubscribe<Drawable>() {
+            @Override
+            public void call(Subscriber<? super Drawable> subscriber) {
+                Drawable drawable = getResources().getDrawable(drawableRes);
+                subscriber.onNext(drawable);// 发送数据
+                subscriber.onCompleted();// 发送完成
+            }
+        }).subscribe(new Observer<Drawable>() {
+            @Override
+            public void onNext(Drawable drawable) {
+                ivShowPicById.setImageDrawable(drawable);// 观察到数据
+            }
+
+            @Override
+            public void onCompleted() {
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                Toast.makeText(ObserverActivity.this, "Error!", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void logStringArray() {
@@ -37,7 +70,7 @@ public class ObserverActivity extends AppCompatActivity {
                 .subscribe(new Action1<String>() {
                     @Override
                     public void call(String name) {
-                        Log.d("chris","name==" + name);
+                        Log.e("chris","name==" + name);
                         tvLogStringArray.setText(name);
                     }
                 });
@@ -49,5 +82,6 @@ public class ObserverActivity extends AppCompatActivity {
 
     private void initView() {
         tvLogStringArray = (TextView) findViewById(R.id.tvLogStringArray);
+        ivShowPicById = (ImageView) findViewById(R.id.ivShowPicById);
     }
 }
