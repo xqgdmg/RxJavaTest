@@ -43,6 +43,7 @@ Action1 也是一个接口，它同样只有一个方法 call(T param)，这个�
 map() 是一对一的转化，flatMap()是一对多的转化。</br>
   
 和Retrofit结合，当请求成功后开线程需要处理数据的时候。</br>
+map 和 flatMap 都是过滤，doOnNext 是处理。
 doOnNext(Action1<? super T> onNext)</br>
 Modifies the source Observable so that it invokes an action when it calls onNext.</br>
 doOnNext does not operate by default on a particular Scheduler.</br>
